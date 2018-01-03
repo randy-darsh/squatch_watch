@@ -1,39 +1,61 @@
-# iOS CircleCI 2.0 configuration file
+# Ruby CircleCI 2.0 configuration file
 #
-# Check https://circleci.com/docs/2.0/ios-migrating-from-1-2/ for more details
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
 #
 version: 2
 jobs:
   build:
+    docker:
+      # specify the version you desire here
+       - image: circleci/ruby:2.4.1-node-browsers
+      
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/postgres:9.4
 
-    # Specify the Xcode version to use
-    macos:
-      xcode: "9.2"
+    working_directory: ~/repo
 
     steps:
       - checkout
 
-      # Install CocoaPods
-      - run:
-          name: Install CocoaPods
-          command: pod install
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
 
-      # Build the app and run tests
       - run:
-          name: Build and run tests
-          command: fastlane scan
-          environment:
-            SCAN_DEVICE: iPhone 6
-            SCAN_SCHEME: WebTests
+          name: install dependencies
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
 
-      # Collect XML test results data to show in the UI,
-      # and save the same XML files under test-results folder
-      # in the Artifacts tab
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+        
+      # Database setup
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
+
+      # run tests!
+      - run:
+          name: run tests
+          command: |
+            mkdir /tmp/test-results
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+            
+            bundle exec rspec --format progress \
+                            --format RspecJunitFormatter \
+                            --out /tmp/test-results/rspec.xml \
+                            --format progress \
+                            "${TEST_FILES}"
+
+      # collect reports
       - store_test_results:
-          path: test_output/report.xml
+          path: /tmp/test-results
       - store_artifacts:
           path: /tmp/test-results
-          destination: scan-test-results
-      - store_artifacts:
-          path: ~/Library/Logs/scan
-          destination: scan-logs
+          destination: test-results
