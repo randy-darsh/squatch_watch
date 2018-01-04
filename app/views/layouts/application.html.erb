@@ -12,6 +12,11 @@
     <div class="topnav" id="myTopnav">
       <a class="active" href="/">Squatch Watch</a>
       <a href="squatch_map">Squatch Map</a>
+      <% if current_user  %>
+        <%= link_to "Logout", logout_path %>
+      <% else %>
+        <%= link_to "Login with Google", "auth/google" %>
+      <% end %>
       <a href="#about">About</a>
     </div> 
     <%= yield %>
