@@ -1,2 +1,200 @@
-<h2>Squatch Map</h2>
+<h2>Squatch Sighting Map</h2>
 <iframe src="https://www.google.com/maps/d/u/0/embed?mid=17R5-mNOE_P8wsE0qpYBPag6P5Rqarkiw" width="800" height="600"></iframe>
+
+<h2>Squatch Heat Map</h2>
+<!-- Styles -->
+<style>
+#chartdiv {
+  width: 100%;
+  height: 500px;
+}
+</style>
+
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+<script src="https://www.amcharts.com/lib/3/maps/js/usaLow.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
+<!-- Chart code -->
+<script>
+var map = AmCharts.makeChart( "chartdiv", {
+  "type": "map",
+  "theme": "light",
+  "colorSteps": 10,
+
+  "dataProvider": {
+    "map": "usaLow",
+    "areas": [ {
+      "id": "US-AL",
+      "value": <%= @big_foot_reports.state_count("Alabama") %>
+    }, {
+      "id": "US-AK",
+      "value": <%= @big_foot_reports.state_count("Alaska") %>
+    }, {
+      "id": "US-AZ",
+      "value": <%= @big_foot_reports.state_count("Arizona") %>
+    }, {
+      "id": "US-AR",
+      "value": <%= @big_foot_reports.state_count("Arkansas") %>
+    }, {
+      "id": "US-CA",
+      "value": <%= @big_foot_reports.state_count("California") %>
+    }, {
+      "id": "US-CO",
+      "value": <%= @big_foot_reports.state_count("Colorado") %>
+    }, {
+      "id": "US-CT",
+      "value": <%= @big_foot_reports.state_count("Connecticut") %>
+    }, {
+      "id": "US-DE",
+      "value": <%= @big_foot_reports.state_count("Delaware") %>
+    }, {
+      "id": "US-FL",
+      "value": <%= @big_foot_reports.state_count("Florida") %>
+    }, {
+      "id": "US-GA",
+      "value": <%= @big_foot_reports.state_count("Georgia") %>
+    }, {
+      "id": "US-HI",
+      "value": <%= @big_foot_reports.state_count("Hawaii") %>
+    }, {
+      "id": "US-ID",
+      "value": <%= @big_foot_reports.state_count("Idaho") %>
+    }, {
+      "id": "US-IL",
+      "value": <%= @big_foot_reports.state_count("Illinois") %>
+    }, {
+      "id": "US-IN",
+      "value": <%= @big_foot_reports.state_count("Indiana") %>
+    }, {
+      "id": "US-IA",
+      "value": <%= @big_foot_reports.state_count("Iowa") %>
+    }, {
+      "id": "US-KS",
+      "value": <%= @big_foot_reports.state_count("Kansas") %>
+    }, {
+      "id": "US-KY",
+      "value": <%= @big_foot_reports.state_count("Kentukcy") %>
+    }, {
+      "id": "US-LA",
+      "value": <%= @big_foot_reports.state_count("Louisiana") %>
+    }, {
+      "id": "US-ME",
+      "value": <%= @big_foot_reports.state_count("Maine") %>
+    }, {
+      "id": "US-MD",
+      "value": <%= @big_foot_reports.state_count("Maryland") %>
+    }, {
+      "id": "US-MA",
+      "value": <%= @big_foot_reports.state_count("Massachusetts") %>
+    }, {
+      "id": "US-MI",
+      "value": <%= @big_foot_reports.state_count("Michigan") %>
+    }, {
+      "id": "US-MN",
+      "value": <%= @big_foot_reports.state_count("Minnesota") %>
+    }, {
+      "id": "US-MS",
+      "value": <%= @big_foot_reports.state_count("Mississippi") %>
+    }, {
+      "id": "US-MO",
+      "value": <%= @big_foot_reports.state_count("Missouri") %>
+    }, {
+      "id": "US-MT",
+      "value": <%= @big_foot_reports.state_count("Montana") %>
+    }, {
+      "id": "US-NE",
+      "value": <%= @big_foot_reports.state_count("Nebraska") %>
+    }, {
+      "id": "US-NV",
+      "value": <%= @big_foot_reports.state_count("Nevada") %>
+    }, {
+      "id": "US-NH",
+      "value": <%= @big_foot_reports.state_count("New Hampshire") %>
+    }, {
+      "id": "US-NJ",
+      "value": <%= @big_foot_reports.state_count("New Jersey") %>
+    }, {
+      "id": "US-NM",
+      "value": <%= @big_foot_reports.state_count("New Mexico") %>
+    }, {
+      "id": "US-NY",
+      "value": <%= @big_foot_reports.state_count("New York") %>
+    }, {
+      "id": "US-NC",
+      "value": <%= @big_foot_reports.state_count("North Carolina") %>
+    }, {
+      "id": "US-ND",
+      "value": <%= @big_foot_reports.state_count("North Dakota") %>
+    }, {
+      "id": "US-OH",
+      "value": <%= @big_foot_reports.state_count("Ohio") %>
+    }, {
+      "id": "US-OK",
+      "value": <%= @big_foot_reports.state_count("Oklahoma") %>
+    }, {
+      "id": "US-OR",
+      "value": <%= @big_foot_reports.state_count("Oregon") %>
+    }, {
+      "id": "US-PA",
+      "value": <%= @big_foot_reports.state_count("Pennsylvania") %>
+    }, {
+      "id": "US-RI",
+      "value": <%= @big_foot_reports.state_count("Rhode Island") %>
+    }, {
+      "id": "US-SC",
+      "value": <%= @big_foot_reports.state_count("South Carolina") %>
+    }, {
+      "id": "US-SD",
+      "value": <%= @big_foot_reports.state_count("South Dakota") %>
+    }, {
+      "id": "US-TN",
+      "value": <%= @big_foot_reports.state_count("Tennessee") %>
+    }, {
+      "id": "US-TX",
+      "value": <%= @big_foot_reports.state_count("Texas") %>
+    }, {
+      "id": "US-UT",
+      "value": <%= @big_foot_reports.state_count("Utah") %>
+    }, {
+      "id": "US-VT",
+      "value": <%= @big_foot_reports.state_count("Vermont") %>
+    }, {
+      "id": "US-VA",
+      "value": <%= @big_foot_reports.state_count("Virginia") %>
+    }, {
+      "id": "US-WA",
+      "value": <%= @big_foot_reports.state_count("Washington") %>
+    }, {
+      "id": "US-WV",
+      "value": <%= @big_foot_reports.state_count("West Virginia") %>
+    }, {
+      "id": "US-WI",
+      "value": <%= @big_foot_reports.state_count("Wisconsin") %>
+    }, {
+      "id": "US-WY",
+      "value": <%= @big_foot_reports.state_count("Wyoming") %>
+    } ]
+  },
+
+  "areasSettings": {
+    "autoZoom": true
+  },
+
+  "valueLegend": {
+    "right": 10,
+    "minValue": "Squatch Sightings: low",
+    "maxValue": "high"
+  },
+
+  "export": {
+    "enabled": true
+  }
+
+} );
+</script>
+
+<!-- HTML -->
+<div id="chartdiv"></div>
