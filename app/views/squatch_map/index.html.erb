@@ -1,7 +1,7 @@
-<h2>Squatch Sighting Map</h2>
+<h2>Squatch Report Map</h2>
 <iframe src="https://www.google.com/maps/d/u/0/embed?mid=17R5-mNOE_P8wsE0qpYBPag6P5Rqarkiw" width="800" height="600"></iframe>
 
-<h2>Squatch Heat Map</h2>
+<h2>Squatch Report Heat Map</h2>
 <!-- Styles -->
 <style>
 #chartdiv {
@@ -21,7 +21,7 @@
 <script>
 var map = AmCharts.makeChart( "chartdiv", {
   "type": "map",
-  "theme": "light",
+  "theme": "none",
   "colorSteps": 10,
 
   "dataProvider": {
@@ -185,7 +185,7 @@ var map = AmCharts.makeChart( "chartdiv", {
 
   "valueLegend": {
     "right": 10,
-    "minValue": "Squatch Sightings: low",
+    "minValue": "low",
     "maxValue": "high"
   },
 
