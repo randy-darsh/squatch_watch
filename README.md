@@ -7,4 +7,4 @@ I present you: Squatch Watch
 
 The world's most comprehensive Sasquatch hunting app!
 
-With data for over 1500 Samsquantch sightings all over the US and Canada.
+With data for over 4500 Samsquantch sightings all over the US and Canada.
