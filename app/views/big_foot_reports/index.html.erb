@@ -1,0 +1,11 @@
+<h2>Squatch Reports</h2>
+
+<ul>
+  <% @big_foot_reports.each do |report| %>
+  <li>
+    Report Number: <%= link_to "#{report.id} #{report.report_class}", big_foot_report_path(report.id) %><br>
+  </li>
+  <% end %>
+</ul>
+
+<%= will_paginate @big_foot_reports %>
