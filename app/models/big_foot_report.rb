@@ -11,4 +11,12 @@ class BigFootReport < ApplicationRecord
   def find_date
     "#{date} #{month} #{year}"
   end
+
+  def self.search_by_state(state)
+    where(state: state)
+  end
+
+  def self.search_by_report_number(report_number)
+    where(report_number: report_number)
+  end
 end
