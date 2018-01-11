@@ -3,7 +3,7 @@
 <ul>
   <% @big_foot_reports.each do |report| %>
   <li>
-    Report Number: <%= link_to "#{report.id} #{report.report_class}", big_foot_report_path(report.id) %><br>
+    Report Number: <%= link_to "#{report.report_number} #{report.report_class}", big_foot_report_path(report.id) %><br>
   </li>
   <% end %>
 </ul>
