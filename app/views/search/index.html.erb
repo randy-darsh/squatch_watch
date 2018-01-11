@@ -1,0 +1,17 @@
+<h2>Search Results for <%= params[:search] %></h2>
+<ul>
+  <% @search_by_state.each do |report| %>
+    <li>
+      Report Number: <%= link_to "#{report.report_number} #{report.report_class}", big_foot_report_path(report.id) %><br>
+    </li>
+  <% end %>
+</ul>
+<%= will_paginate @search_by_state %>
+
+<ul>
+  <% @search_by_report_number.each do |report| %>
+    <li>
+      Report Number: <%= link_to "#{report.report_number} #{report.report_class}", big_foot_report_path(report.id) %><br>
+    </li>
+  <% end %>
+</ul>
