@@ -1,5 +1,5 @@
 class BigFootReport < ApplicationRecord
-  validates :report_number, presence: :true
+  # validates :report_number, presence: true
   def self.state_count(state_name)
     where(state: state_name).count
   end
