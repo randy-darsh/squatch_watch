@@ -1,6 +1,6 @@
 <h2>Search Results for <%= params[:search] %></h2>
 <ul>
-  <% @search_by_state.each do |report| %>
+  <% @search_by_state.order_by_report_number.each do |report| %>
     <li>
       Report Number: <%= link_to "#{report.report_number} #{report.report_class}", big_foot_report_path(report.id) %><br>
     </li>
@@ -9,9 +9,36 @@
 <%= will_paginate @search_by_state %>
 
 <ul>
-  <% @search_by_report_number.each do |report| %>
+  <% @search_by_report_number.order_by_report_number.each do |report| %>
     <li>
       Report Number: <%= link_to "#{report.report_number} #{report.report_class}", big_foot_report_path(report.id) %><br>
     </li>
   <% end %>
 </ul>
+
+<ul>
+  <% @search_by_year.order_by_report_number.each do |report| %>
+    <li>
+      Report Number: <%= link_to "#{report.report_number} #{report.report_class}", big_foot_report_path(report.id) %><br>
+    </li>
+  <% end %>
+</ul>
+<%= will_paginate @search_by_year %>
+
+<ul>
+  <% @search_by_season.order_by_report_number.each do |report| %>
+    <li>
+      Report Number: <%= link_to "#{report.report_number} #{report.report_class}", big_foot_report_path(report.id) %><br>
+    </li>
+  <% end %>
+</ul>
+<%= will_paginate @search_by_season %>
+
+<ul>
+  <% @search_by_report_class.order_by_report_number.each do |report| %>
+    <li>
+      Report Number: <%= link_to "#{report.report_number} #{report.report_class}", big_foot_report_path(report.id) %><br>
+    </li>
+  <% end %>
+</ul>
+<%= will_paginate @search_by_report_class %>
