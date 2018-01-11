@@ -19,4 +19,16 @@ class BigFootReport < ApplicationRecord
   def self.search_by_report_number(report_number)
     where(report_number: report_number)
   end
+
+  def self.search_by_year(year)
+    where(year: year)
+  end
+
+  def self.search_by_season(season)
+    where(season: season)
+  end
+
+  def self.search_by_report_class(report_class)
+    where(report_class: report_class)
+  end
 end
