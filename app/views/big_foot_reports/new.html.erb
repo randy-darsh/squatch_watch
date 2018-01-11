@@ -1,0 +1,35 @@
+<h2>I Found A Dang Samsquantch!</h2>
+<h4>For more information about report classes visit the about page.</h4>
+<%= form_for @big_foot_report do |f| %>
+  <%= f.label :report_class, "Class the report falls into:" %>
+  <%= f.select :report_class, ['Class A', 'Class B', 'Class C']%><br><br>
+  <%= f.label :state, "State:" %>
+  <%= f.select :state, ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Flordia', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'] %><br><br>
+  <%= f.label :season, "Season:" %>
+  <%= f.select :season, %w[Spring Summer Fall Winter] %><br><br>
+  <%= f.label "Day:" %>
+  <%= f.select :date, (1..31).to_a.map(&:to_s) %>
+  <%= f.label :month, "Month:" %>
+  <%= f.select :month, %w[January February March April May June July August September October November December] %>
+  <%= f.label :year, "Year:" %>
+  <%= f.select :year, (1918..2018).to_a.map(&:to_s) %><br>
+  <p>Please describe the environment where the incident occurred. (E.g., pine forest, swamp, etc. Be sure to note any nearby landmarks or structures. (E.g. creek bottom, mountain ridge, bridges, etc.)</p>
+  <%= f.text_area :environment %><br>
+  <p>Please provide any other information about the location, including directions to it. NOTE: at your request, this information will not be posted online if it might cause any sort of problems.</p>
+  <%= f.text_area :location_details %><br>
+  <p>Please tell your whole story here. If you had a visual incident, take extra time to be as descriptive as you can be about the appearance and behavior observed.</p>
+  <%= f.text_area :observed %><br>
+  <p>If anything else unusual was observed, found, or heard at the location before, during, or after the incident, please note it here.</p>
+  <%= f.text_area :also_noticed %><br>
+  <p>How many witnesses were involved? What were the witness(es) doing just prior to the incident?</p>
+  <%= f.text_field :other_witnesses %><br>
+  <p>What time of day or night did the incident occur? Also describe the lighting conditions and weather conditions at the time of the incident.</p>
+  <%= f.text_field :time_and_conditions %><br>
+  <p>In which county did the incident occur?</p>
+  <%= f.text_field :county %><br>
+  <p>What was the nearest city or town?</p>
+  <%= f.text_field :nearest_town %><br>
+  <p>What was the nearest road or highway?</p>
+  <%= f.text_field :nearest_road %><br><br>
+  <%= f.submit "Submit", method: :create %>
+<% end %>
