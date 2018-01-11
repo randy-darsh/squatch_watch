@@ -4,6 +4,7 @@ csv_text = File.read(Rails.root.join('db', 'data', 'bfro_reports.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
   report = BigFootReport.new
+  report.id = row['report_number']
   report.report_number = row['report_number']
   report.report_class = row['report_class']
   report.county = row['county']
