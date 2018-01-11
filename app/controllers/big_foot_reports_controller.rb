@@ -9,18 +9,18 @@ class BigFootReportsController < ApplicationController
     end
   end
 
-  def new
+  def show
     if current_user
-      @big_foot_report = BigFootReport.new
+      @big_foot_report = BigFootReport.find(params[:id])
     else
       redirect_to root_path
       flash[:notice] = "Please create an account or login first"
     end
   end
 
-  def show
+  def new
     if current_user
-      @big_foot_report = BigFootReport.find(params[:id])
+      @big_foot_report = BigFootReport.new
     else
       redirect_to root_path
       flash[:notice] = "Please create an account or login first"
