@@ -30,6 +30,8 @@
   <p>What was the nearest city or town?</p>
   <%= f.text_field :nearest_town %><br>
   <p>What was the nearest road or highway?</p>
-  <%= f.text_field :nearest_road %><br><br>
+  <%= f.text_field :nearest_road %><br>
+  <p>Have you heard of any other incidents like this in the same area? If so, please give any details here.</p>
+  <%= f.text_area :other_stories %><br><br>
   <%= f.submit "Submit", method: :create %>
 <% end %>
