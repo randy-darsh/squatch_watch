@@ -3,7 +3,7 @@
   <head>
     <title>Squatch Watch</title>
     <%= csrf_meta_tags %>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
@@ -20,6 +20,12 @@
       <% else %>
         <%= link_to "Login with Google", "auth/google" %>
       <% end %>
+      <div class="search-container">
+        <form action="/search">
+          <input type="text" placeholder="Search.." name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
     </div> 
     <p class="flash"><%= flash.notice %></p>
     <%= yield %>
